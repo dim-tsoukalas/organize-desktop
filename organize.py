@@ -1,8 +1,8 @@
 import os
 import shutil
 
-destination_folder = 'C:/Users/tzima/Documents/'
-source_folder = 'C:/Users/tzima/Desktop/'
+destination_folder = 'C:/Users/tzima/Documents/Downloads/'
+source_folder = 'C:/Users/tzima/Downloads/'
 
 def org():
 
@@ -12,14 +12,15 @@ def org():
         destination = destination_folder + filename
 
         if filename.endswith('.txt'):
-           shutil.copy(source, destination)
+           shutil.copy(source, destination_folder+'pdfFilesDownload/' + filename)
 
         elif filename.endswith('.jpeg' ) or filename.endswith('.jpg') or filename.endswith('.jpeg') or filename.endswith('.png')  :
-            shutil.copy(source, destination)
+            shutil.copy(source, destination_folder+'photosDownload/' + filename)
 
         elif filename.endswith('.doc') or filename.endswith('.docx') or filename.endswith('.pdf'):
-            shutil.copy(source, destination)
+            shutil.copy(source, destination_folder+'pdfFilesDownload/' + filename)
 
-        elif os.path.isdir(filename):
-            shutil.copy(source, destination)
+        elif filename.endswith('.txt'):
+           shutil.copy(source, destination_folder+'zipFilesDownload/' + filename)
+
 
