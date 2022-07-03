@@ -12,15 +12,16 @@ def org():
         destination = destination_folder + filename
 
         if filename.endswith('.txt'):
-           shutil.copy(source, destination_folder+'pdfFilesDownload/' + filename)
+           shutil.copy(source, destination_folder+'docsPdfFilesDownload/' + filename)
 
         elif filename.endswith('.jpeg' ) or filename.endswith('.jpg') or filename.endswith('.jpeg') or filename.endswith('.png')  :
             shutil.copy(source, destination_folder+'photosDownload/' + filename)
 
         elif filename.endswith('.doc') or filename.endswith('.docx') or filename.endswith('.pdf'):
-            shutil.copy(source, destination_folder+'pdfFilesDownload/' + filename)
+            shutil.copy(source, destination_folder+'docsPdfFilesDownload/' + filename)
 
         elif filename.endswith('.zip'):
            shutil.copy(source, destination_folder+'zipFilesDownload/' + filename)
 
 
+org()
