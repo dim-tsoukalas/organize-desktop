@@ -14,19 +14,27 @@ def org():
         destination = destination_folder + filename
 
         if filename.endswith('.txt'):
-           shutil.move(source, get_destination(destination_folder, 'docsPdfFilesDownload', filename))
+           shutil.copy(source, get_destination(destination_folder, 'docsPdfFilesDownload', filename))
 
         elif filename.endswith('.jpeg' ) or filename.endswith('.jpg') or filename.endswith('.jpeg') or filename.endswith('.png')  :
-            shutil.move(source, get_destination(destination_folder, 'photosDownload', filename))
+            shutil.copy(source, get_destination(destination_folder, 'photosDownload', filename))
 
-        elif filename.endswith('.doc') or filename.endswith('.docx') or filename.endswith('.pdf'):
-            shutil.move(source, get_destination(destination_folder, 'docsPdfFilesDownload', filename))
+        elif filename.endswith('.doc') or filename.endswith('.docx') or filename.endswith('.pdf') or filename.endswith('.pptx'):
+            shutil.copy(source, get_destination(destination_folder, 'docsPdfFilesDownload', filename))
 
         elif filename.endswith('.zip'):
-           shutil.move(source, get_destination(destination_folder, 'zipFilesDownload', filename))
+           shutil.copy(source, get_destination(destination_folder, 'zipFilesDownload', filename))
+
+        elif filename.endswith('.exe'):
+           shutil.copy(source, get_destination(destination_folder, 'exeFilesDownload', filename))
+
+        elif filename.endswith('.mp3'):
+           shutil.copy(source, get_destination(destination_folder, 'musicFilesDownload', filename))
+
+
 
 def get_destination(d, f, n):
-    return d + '/' + n + f 
+    return d + f +'/'+ n
 
 
 org()
