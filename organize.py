@@ -36,7 +36,7 @@ def org():
 def get_destination(d, f, n):
     return d + f +'/'+ n
 
-#Code to run in background and organize downloads
+#Code to run in background when added (or removed) files.
 
 import time
 before = dict ([(f, None) for f in os.listdir (source_folder)])
