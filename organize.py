@@ -14,27 +14,41 @@ def org():
         destination = destination_folder + filename
 
         if filename.endswith('.txt'):
-           shutil.copy(source, get_destination(destination_folder, 'docsPdfFilesDownload', filename))
+           shutil.move(source, get_destination(destination_folder, 'docsPdfFilesDownload', filename))
 
         elif filename.endswith('.jpeg' ) or filename.endswith('.jpg') or filename.endswith('.jpeg') or filename.endswith('.png')  :
-            shutil.copy(source, get_destination(destination_folder, 'photosDownload', filename))
+            shutil.move(source, get_destination(destination_folder, 'photosDownload', filename))
 
         elif filename.endswith('.doc') or filename.endswith('.docx') or filename.endswith('.pdf') or filename.endswith('.pptx'):
-            shutil.copy(source, get_destination(destination_folder, 'docsPdfFilesDownload', filename))
+            shutil.move(source, get_destination(destination_folder, 'docsPdfFilesDownload', filename))
 
         elif filename.endswith('.zip'):
-           shutil.copy(source, get_destination(destination_folder, 'zipFilesDownload', filename))
+           shutil.move(source, get_destination(destination_folder, 'zipFilesDownload', filename))
 
         elif filename.endswith('.exe'):
-           shutil.copy(source, get_destination(destination_folder, 'exeFilesDownload', filename))
+           shutil.move(source, get_destination(destination_folder, 'exeFilesDownload', filename))
 
         elif filename.endswith('.mp3'):
-           shutil.copy(source, get_destination(destination_folder, 'musicFilesDownload', filename))
+           shutil.move(source, get_destination(destination_folder, 'musicFilesDownload', filename))
 
 
 
 def get_destination(d, f, n):
     return d + f +'/'+ n
 
+#Code to run in background and organize downloads
 
-org()
+import time
+before = dict ([(f, None) for f in os.listdir (source_folder)])
+while 1:
+    time.sleep (1)
+    after = dict ([(f, None) for f in os.listdir (source_folder)])
+    added = [f for f in after if not f in before]
+    removed = [f for f in before if not f in after]
+    if added: 
+        print("add")
+        org()
+    if removed:
+        print("remove")
+    
+    before = after
