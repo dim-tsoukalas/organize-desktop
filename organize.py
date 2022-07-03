@@ -20,7 +20,7 @@ def org():
         elif filename.endswith('.doc') or filename.endswith('.docx') or filename.endswith('.pdf'):
             shutil.copy(source, destination_folder+'pdfFilesDownload/' + filename)
 
-        elif filename.endswith('.txt'):
+        elif filename.endswith('.zip'):
            shutil.copy(source, destination_folder+'zipFilesDownload/' + filename)
 
 
